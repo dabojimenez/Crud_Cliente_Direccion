@@ -13,7 +13,7 @@
 
 Clona la aplicacion y ejecutala, necesitaras usar [Git](https://git-scm.com), [VisualStudio2022](https://visualstudio.microsoft.com/es/downloads/) y un motor de Base de Datos relacional [SqlServer2019](https://go.microsoft.com/fwlink/?linkid=866662) en su version **15.0.2095.3**
 
-Instala VisualStudio2022 y la base de datos SqlServer
+- Instala VisualStudio2022 con el entorno de trbajao de **Desarrollo de escritorio de .NET** con .NET Framework 4.7 y la base de datos SqlServer
 ```bash
 # Clona este repositorio
 $ git clone https://github.com/dabojimenez/Crud_Cliente_Direccion.git
