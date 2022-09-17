@@ -65,7 +65,7 @@ namespace CRUD_PT_SPLENDOR
             LogicaCliente logicaCliente = new LogicaCliente();
             if (logicaCliente.INSERTAR_CLIENTE(cliente))
             {
-                MessageBox.Show("Cliente Registrado","Administracion de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cliente Registrado Exitosamente","Administracion de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             MostrarClientes();
         }
@@ -77,7 +77,6 @@ namespace CRUD_PT_SPLENDOR
             cliente.CEDULA_CLIENTE = txtCedula.Text.ToUpper();
             return cliente;
         }
-
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             if(pagina > 0)
@@ -107,39 +106,62 @@ namespace CRUD_PT_SPLENDOR
         }
         private void PerzoanlizarDGV()
         {
-            dgvCliente.Columns[2].Visible = false;
-            dgvCliente.Columns[3].HeaderText = "Nombre";
-            dgvCliente.Columns[4].HeaderText = "Cedula";
+            dgvCliente.Columns[3].Visible = false;
+            dgvCliente.Columns[4].HeaderText = "Nombre";
+            dgvCliente.Columns[5].HeaderText = "Cedula";
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+        private void MostrarDatosCuadrosTexto()
+        {
+            txtNombre.Text = dgvCliente.SelectedCells[4].Value.ToString();
+            txtCedula.Text = dgvCliente.SelectedCells[5].Value.ToString();
+        }
 
         private void dgvCliente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvCliente.Columns[0].Index)
             {
-                idCliente = int.Parse(dgvCliente.SelectedCells[2].Value.ToString());
-                txtNombre.Text = dgvCliente.SelectedCells[3].Value.ToString();
-                txtCedula.Text = dgvCliente.SelectedCells[4].Value.ToString();
+                idCliente = ObtenerIdCliente();
+                MostrarDatosCuadrosTexto();
                 btnGuardar.Visible = false;
                 btnActualizar.Visible = true;
                 btnCancelar.Visible = true;
+                return;
             }
             if (e.ColumnIndex == dgvCliente.Columns[1].Index)
             {
                 var respuesta = MessageBox.Show("Esta seguro de eliminar este registro?", "Administracion de Clientes", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    idCliente = int.Parse(dgvCliente.SelectedCells[2].Value.ToString());
+                    idCliente = ObtenerIdCliente();
                     EliminarCliente(idCliente);
                     MessageBox.Show("Cliente Eliminado Satisfactoriamente", "Administracion de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                return;
+            }
+            if (e.ColumnIndex == dgvCliente.Columns[2].Index)
+            {
+                txtCedula.ReadOnly = true;
+                txtNombre.ReadOnly = true;
+                pnlDirecciones.Controls.Clear();
+                btnCancelar.Visible = true;
+                idCliente = ObtenerIdCliente();
+                MostrarDatosCuadrosTexto();
+                ModeloCliente cliente = CapturarDatos(idCliente);
+                Direcciones_CU direcciones = new Direcciones_CU(cliente);
+                direcciones.Dock = DockStyle.Fill;
+                pnlDirecciones.Controls.Add(direcciones);
+                return;
             }
         }
-
+        private int ObtenerIdCliente()
+        {
+            return int.Parse(dgvCliente.SelectedCells[3].Value.ToString());
+        }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             GuardarCambios();
@@ -162,6 +184,10 @@ namespace CRUD_PT_SPLENDOR
             btnGuardar.Visible = true;
             btnActualizar.Visible = false;
             btnCancelar.Visible = false;
+            txtCedula.ReadOnly = false;
+            txtNombre.ReadOnly = false;
+            pnlDirecciones.Controls.Clear();
+            pnlDirecciones.Controls.Add(lblDirecciones);
         }
         private void EliminarCliente(int idCliente)
         {

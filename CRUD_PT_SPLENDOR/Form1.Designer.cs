@@ -47,16 +47,22 @@ namespace CRUD_PT_SPLENDOR
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvCliente = new System.Windows.Forms.DataGridView();
+            this.pnlDirecciones = new System.Windows.Forms.Panel();
+            this.lblDirecciones = new System.Windows.Forms.Label();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.Direccion = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
+            this.pnlDirecciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -113,7 +119,7 @@ namespace CRUD_PT_SPLENDOR
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 395);
+            this.panel1.Size = new System.Drawing.Size(376, 395);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -128,9 +134,9 @@ namespace CRUD_PT_SPLENDOR
             this.panel3.Controls.Add(this.lblPagina);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 161);
+            this.panel3.Location = new System.Drawing.Point(0, 364);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(410, 31);
+            this.panel3.Size = new System.Drawing.Size(376, 31);
             this.panel3.TabIndex = 3;
             // 
             // label8
@@ -214,7 +220,7 @@ namespace CRUD_PT_SPLENDOR
             this.flowLayoutPanel1.Controls.Add(this.btnCancelar);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 116);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(438, 33);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(349, 33);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -239,48 +245,6 @@ namespace CRUD_PT_SPLENDOR
             this.btnActualizar.Visible = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // dgvCliente
-            // 
-            this.dgvCliente.AllowUserToAddRows = false;
-            this.dgvCliente.AllowUserToDeleteRows = false;
-            this.dgvCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Editar,
-            this.Eliminar});
-            this.dgvCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvCliente.Location = new System.Drawing.Point(0, 192);
-            this.dgvCliente.Name = "dgvCliente";
-            this.dgvCliente.RowHeadersVisible = false;
-            this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCliente.Size = new System.Drawing.Size(410, 203);
-            this.dgvCliente.TabIndex = 1;
-            this.dgvCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellClick);
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.editar;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.Width = 40;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.basura;
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Width = 49;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(410, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(372, 395);
-            this.panel2.TabIndex = 2;
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(234, 3);
@@ -292,12 +256,107 @@ namespace CRUD_PT_SPLENDOR
             this.btnCancelar.Visible = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // dgvCliente
+            // 
+            this.dgvCliente.AllowUserToAddRows = false;
+            this.dgvCliente.AllowUserToDeleteRows = false;
+            this.dgvCliente.AllowUserToOrderColumns = true;
+            this.dgvCliente.AllowUserToResizeColumns = false;
+            this.dgvCliente.AllowUserToResizeRows = false;
+            this.dgvCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvCliente.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Editar,
+            this.Eliminar,
+            this.Direccion});
+            this.dgvCliente.Location = new System.Drawing.Point(30, 155);
+            this.dgvCliente.Name = "dgvCliente";
+            this.dgvCliente.ReadOnly = true;
+            this.dgvCliente.RowHeadersVisible = false;
+            this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCliente.Size = new System.Drawing.Size(316, 203);
+            this.dgvCliente.TabIndex = 1;
+            this.dgvCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellClick);
+            // 
+            // pnlDirecciones
+            // 
+            this.pnlDirecciones.Controls.Add(this.lblDirecciones);
+            this.pnlDirecciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDirecciones.Location = new System.Drawing.Point(376, 0);
+            this.pnlDirecciones.Name = "pnlDirecciones";
+            this.pnlDirecciones.Size = new System.Drawing.Size(406, 395);
+            this.pnlDirecciones.TabIndex = 2;
+            // 
+            // lblDirecciones
+            // 
+            this.lblDirecciones.AutoSize = true;
+            this.lblDirecciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDirecciones.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblDirecciones.Location = new System.Drawing.Point(70, 183);
+            this.lblDirecciones.Name = "lblDirecciones";
+            this.lblDirecciones.Size = new System.Drawing.Size(286, 29);
+            this.lblDirecciones.TabIndex = 0;
+            this.lblDirecciones.Text = "Direcciones del Cliente";
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.editar;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 40;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.basura;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 49;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.HeaderText = "Direccion";
+            this.dataGridViewImageColumn3.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.clavo;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Width = 58;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.editar;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 40;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.basura;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Width = 49;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.clavo;
+            this.Direccion.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 58;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 395);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlDirecciones);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -310,6 +369,8 @@ namespace CRUD_PT_SPLENDOR
             this.panel3.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
+            this.pnlDirecciones.ResumeLayout(false);
+            this.pnlDirecciones.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -322,7 +383,7 @@ namespace CRUD_PT_SPLENDOR
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlDirecciones;
         private System.Windows.Forms.DataGridView dgvCliente;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnGuardar;
@@ -336,9 +397,14 @@ namespace CRUD_PT_SPLENDOR
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblDirecciones;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DataGridViewImageColumn Direccion;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
     }
 }
 

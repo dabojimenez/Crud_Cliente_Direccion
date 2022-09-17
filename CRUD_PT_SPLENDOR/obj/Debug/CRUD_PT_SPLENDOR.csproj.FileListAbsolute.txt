@@ -6,7 +6,6 @@ C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\bin\Debug\Modelo.dll
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\bin\Debug\Controlador.pdb
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\bin\Debug\Modelo.pdb
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.csproj.AssemblyReference.cache
-C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.csproj.SuggestedBindingRedirects.cache
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.Form1.resources
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.Properties.Resources.resources
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.csproj.GenerateResource.cache
@@ -14,3 +13,4 @@ C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.csproj.CopyComplete
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.exe
 C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.pdb
+C:\Users\David\source\repos\Splendor\CRUD_PT_SPLENDOR\obj\Debug\CRUD_PT_SPLENDOR.Direcciones_CU.resources
