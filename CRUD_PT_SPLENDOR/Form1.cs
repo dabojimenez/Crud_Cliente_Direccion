@@ -29,15 +29,14 @@ namespace CRUD_PT_SPLENDOR
             txtNombre.Clear();
             idCliente = 0;
         }
+        /// <summary>
+        /// Metodo que otorga a la variable global contador, la cantidad de registros existentes
+        /// </summary>
         private void TotalRegistros()
         {
             LogicaCliente logicaCliente = new LogicaCliente();
             logicaCliente.TOTAL_REGISTROS(ref contador);
             lblTotal.Text = contador.ToString();
-        }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,6 +45,9 @@ namespace CRUD_PT_SPLENDOR
             PaginadoRegistros();
             PerzoanlizarDGV();
         }
+        /// <summary>
+        /// Se llena el DataGridView con registros de tipo ModeloCliente
+        /// </summary>
         private void MostrarClientes()
         {
             DataTable dataTable = new DataTable();
@@ -56,8 +58,13 @@ namespace CRUD_PT_SPLENDOR
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GuardarCliente();
-            LimpiarCuadrosRexto();
+            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtCedula.Text))
+            {
+                GuardarCliente();
+                LimpiarCuadrosRexto();
+                return;
+            }
+            MessageBox.Show("Existen Cuadros de textos Vacios", "Administracion de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void GuardarCliente()
         {
@@ -102,19 +109,15 @@ namespace CRUD_PT_SPLENDOR
         {
             lblPagina.Text = (pagina + 1).ToString();
             lblRegistros.Text = dgvCliente.Rows.Count.ToString();
-
         }
         private void PerzoanlizarDGV()
         {
             dgvCliente.Columns[3].Visible = false;
+            //dgvCliente.Columns[4].DataPropertyName = "Nombre";
             dgvCliente.Columns[4].HeaderText = "Nombre";
             dgvCliente.Columns[5].HeaderText = "Cedula";
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void MostrarDatosCuadrosTexto()
         {
             txtNombre.Text = dgvCliente.SelectedCells[4].Value.ToString();
@@ -141,6 +144,7 @@ namespace CRUD_PT_SPLENDOR
                     EliminarCliente(idCliente);
                     MessageBox.Show("Cliente Eliminado Satisfactoriamente", "Administracion de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                MostrarClientes();
                 return;
             }
             if (e.ColumnIndex == dgvCliente.Columns[2].Index)
@@ -158,14 +162,23 @@ namespace CRUD_PT_SPLENDOR
                 return;
             }
         }
+        /// <summary>
+        /// Se obtiene el identificador del registro, dentro del DataGridView
+        /// </summary>
+        /// <returns>Retorna el IdCliente</returns>
         private int ObtenerIdCliente()
         {
             return int.Parse(dgvCliente.SelectedCells[3].Value.ToString());
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            GuardarCambios();
-            LimpiarCuadrosRexto();
+            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtCedula.Text))
+            {
+                GuardarCambios();
+                LimpiarCuadrosRexto();
+                return;
+            }
+            MessageBox.Show("Existen Cuadros de textos Vacios", "Administracion de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void GuardarCambios()
         {
@@ -193,6 +206,27 @@ namespace CRUD_PT_SPLENDOR
         {
             LogicaCliente logicaCliente = new LogicaCliente();
             logicaCliente.ELIMINAR_CLIENTE(idCliente);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            BuscarClienteXNombreCedula(txtCedula.Text);
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            BuscarClienteXNombreCedula(txtNombre.Text);
+        }
+        /// <summary>
+        /// Metodo que realiza una consulta a BBDD, por medio de una palabra de busqueda
+        /// </summary>
+        /// <param name="buscar">Parametro para realziar la busqueda</param>
+        private void BuscarClienteXNombreCedula(string buscar)
+        {
+            DataTable dataTable = new DataTable();
+            LogicaCliente logicaCliente = new LogicaCliente();
+            logicaCliente.BUSCAR_CLIENTE(ref dataTable, buscar);
+            dgvCliente.DataSource = dataTable;
         }
     }
 }

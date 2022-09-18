@@ -20,11 +20,13 @@ namespace CRUD_PT_SPLENDOR
         public Direcciones_CU(ModeloCliente cliente)
         {
             InitializeComponent();
-            //this.IdCliente = IdCliente;
-            //this.NombreCli = NombreCli;
-            //this.CedulaCli = CedulaCli;
             this.cliente = cliente;
         }
+        /// <summary>
+        /// Se captura los datos que han sido llenados en los cuadros de texto
+        /// </summary>
+        /// <param name="idDirecciones">Valor por defecto es cero, si en caso no sea obtenido el identificado del registro de Direccion</param>
+        /// <returns>Retorna un Objeto de tipo ModeloDirecciones</returns>
         private ModeloDirecciones CapturarDatos(int idDirecciones = 0)
         {
             ModeloDirecciones direcciones = new ModeloDirecciones();
@@ -43,9 +45,17 @@ namespace CRUD_PT_SPLENDOR
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GuardarDireecion();
-            LimpiarCuadrosRexto();
+            if (!string.IsNullOrEmpty(txtCallePrincipal.Text) && !string.IsNullOrEmpty(txtCalleSecundaria.Text))
+            {
+                GuardarDireecion();
+                LimpiarCuadrosRexto();
+                return;
+            }
+            MessageBox.Show("Existen Cuadros de textos Vacios", "Administracion de Direcciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        /// <summary>
+        /// Se realiza la insercion de un registro de tipo ModeloDirecciones
+        /// </summary>
         private void GuardarDireecion()
         {
             ModeloDirecciones direcciones = CapturarDatos();
@@ -56,6 +66,8 @@ namespace CRUD_PT_SPLENDOR
             }
             MostrarDirecciones();
         }
+
+        //Metodo que Llenara de datos al DataGridView
         private void MostrarDirecciones()
         {
             DataTable dt = new DataTable();
@@ -70,6 +82,9 @@ namespace CRUD_PT_SPLENDOR
             }
             dgvDirecciones.Visible = false;
         }
+        /// <summary>
+        /// Perzonalizacion del DataGridView, de forma que la cabecera de las columnas sean entendibles para el usuario
+        /// </summary>
         private void PerzoanlizarDGV()
         {
             dgvDirecciones.Columns[2].Visible = false;
@@ -109,6 +124,10 @@ namespace CRUD_PT_SPLENDOR
             txtCallePrincipal.Text = dgvDirecciones.SelectedCells[3].Value.ToString();
             txtCalleSecundaria.Text = dgvDirecciones.SelectedCells[4].Value.ToString();
         }
+        /// <summary>
+        /// Obtenemos el identificador del registro Direccion
+        /// </summary>
+        /// <returns>Retorna el IdDireccion</returns>
         private int ObtenerIdDireccion()
         {
             return int.Parse(dgvDirecciones.SelectedCells[2].Value.ToString());
@@ -116,7 +135,12 @@ namespace CRUD_PT_SPLENDOR
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            ActualizarRegistroDirecciones();
+            if (!string.IsNullOrEmpty(txtCallePrincipal.Text) && !string.IsNullOrEmpty(txtCalleSecundaria.Text))
+            {
+                ActualizarRegistroDirecciones();
+                return;
+            }
+            MessageBox.Show("Existen Cuadros de textos Vacios", "Administracion de Direcciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void ActualizarRegistroDirecciones()
         {
@@ -143,10 +167,6 @@ namespace CRUD_PT_SPLENDOR
             btnGuardar.Visible = true;
             btnActualizar.Visible = false;
             btnCancelar.Visible = false;
-            //txtCedula.ReadOnly = false;
-            //txtNombre.ReadOnly = false;
-            //pnlDirecciones.Controls.Clear();
-            //pnlDirecciones.Controls.Add(lblDirecciones);
         }
     }
 }

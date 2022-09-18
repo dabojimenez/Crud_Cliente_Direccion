@@ -30,6 +30,7 @@ namespace CRUD_PT_SPLENDOR
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -49,15 +50,16 @@ namespace CRUD_PT_SPLENDOR
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvCliente = new System.Windows.Forms.DataGridView();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlDirecciones = new System.Windows.Forms.Panel();
             this.lblDirecciones = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -67,16 +69,28 @@ namespace CRUD_PT_SPLENDOR
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.txtCedula);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(51, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 91);
+            this.groupBox1.Size = new System.Drawing.Size(274, 91);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.buscar;
+            this.pictureBox1.Location = new System.Drawing.Point(222, 56);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(22, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // txtCedula
             // 
@@ -100,6 +114,7 @@ namespace CRUD_PT_SPLENDOR
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(133, 20);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label1
             // 
@@ -121,7 +136,6 @@ namespace CRUD_PT_SPLENDOR
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(376, 395);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 
@@ -222,14 +236,13 @@ namespace CRUD_PT_SPLENDOR
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(349, 33);
             this.flowLayoutPanel1.TabIndex = 2;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Location = new System.Drawing.Point(3, 3);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(95, 26);
-            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -280,6 +293,33 @@ namespace CRUD_PT_SPLENDOR
             this.dgvCliente.TabIndex = 1;
             this.dgvCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellClick);
             // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.editar;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 40;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.basura;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Width = 49;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.clavo;
+            this.Direccion.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 58;
+            // 
             // pnlDirecciones
             // 
             this.pnlDirecciones.Controls.Add(this.lblDirecciones);
@@ -324,33 +364,6 @@ namespace CRUD_PT_SPLENDOR
             this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
             this.dataGridViewImageColumn3.Width = 58;
             // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.editar;
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Width = 40;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.basura;
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Width = 49;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Image = global::CRUD_PT_SPLENDOR.Properties.Resources.clavo;
-            this.Direccion.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            this.Direccion.Width = 58;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +377,7 @@ namespace CRUD_PT_SPLENDOR
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -405,6 +419,7 @@ namespace CRUD_PT_SPLENDOR
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

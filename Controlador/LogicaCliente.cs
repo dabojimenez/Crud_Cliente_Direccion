@@ -71,6 +71,25 @@ namespace Controlador
                 ConexionMaestra.CerrarBD();
             }
         }
+        public void BUSCAR_CLIENTE(ref DataTable dataTable, string buscar)
+        {
+            try
+            {
+                ConexionMaestra.AbrirBD();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("BUSCAR_CLIENTE", ConexionMaestra.Conexion);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@Buscar", buscar);
+                dataAdapter.Fill(dataTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
+            finally
+            {
+                ConexionMaestra.CerrarBD();
+            }
+        }
         public bool ACTUALIZAR_DATOS(ModeloCliente cliente)
         {
             try
